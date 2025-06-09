@@ -82,7 +82,6 @@
         <!-- Digital Clock Display -->
         <div id="clock">Loading time...</div>
     </header>
-
     <main>
         <p>
             The greatest cliffs are these four cliffs located in southern California. Each of these cliffs have their own uniqueness and beauty:
@@ -97,15 +96,28 @@
             No matter which direction you head from Irvine, California, the sites are easily reached within a 100 mile radius.
             <strong>West Cliff</strong> is the most popular among Westcliff University campus students because of its close proximity.
         </p>
-
         <div class="cliff-images">
-            <img src="Images/cliff-east-river.jpg" alt="East river Cliff">
-            <img src="Images/cliff-north-mountain.jpg" alt="North mountain Cliff">
-            <img src="Images/cliff-south-canyon.jpg" alt="South canyon Cliff">
-            <img src="Images/cliff-west-sea.jpg" alt="West sea Cliff">
-            <img src="Images/forest_cliff.jpg" alt="Forest Cliff">
-        </div>
-    </main>
+    <img src="Images/cliff-east-river.jpg" alt="East river Cliff" data-id="0">
+    <img src="Images/cliff-north-mountain.jpg" alt="North mountain Cliff" data-id="1">
+    <img src="Images/cliff-south-canyon.jpg" alt="South canyon Cliff" data-id="2">
+    <img src="Images/cliff-west-sea.jpg" alt="West sea Cliff" data-id="3">
+    <img src="Images/forest_cliff.jpg" alt="Forest Cliff" data-id="4">
+
+    <!-- Info Box -->
+    <div id="infoBox" style="visibility: hidden; border: 2px solid #444; padding: 15px; border-radius: 8px; background: #eee; margin-top: 20px;">
+        <h3 id="infoHeading">Cliff Info</h3>
+        <p id="infoText">Click on an image to learn more.</p>
+        <a href="#" id="infoClose" style="color: blue; text-decoration: underline; cursor: pointer;">Close Info</a>
+    </div>
+</div>
+    <h2>Introducing California's Greatest Cliffs</h2>
+    <h3>What is so unique about California cliffs?</h3>
+    <p>California cliffs are one of a kind in the United States where no cliffs are as manificent and beautiful as them. And California is the only state that have cliffs that fronts all
+possible environments: sea, river, mountains and canyons. There are four such individual unique cliffs: West Cliff, North Cliff, East Cliff and South Cliff. All offer fantastic
+overlooking views, recreational areas, camping sites, wildlife watch spots and overnight cabins.</p>
+<h3>Where are these cliffs?</h3>
+<p>Located within a 100 mile radius from Irvine, California, they can be reached by roads easily. The closest cliff to Irvine is West Cliff, which is the most popular and most
+visited.</p>
 
     <footer>
         &copy; 2025 California Cliffs Guide. All Rights Reserved.
@@ -134,6 +146,27 @@
         // Update every second
         setInterval(updateClock, 1000);
         updateClock(); // Initial call
+
+        //Descriptions for each cliff image based on data-id
+        const cliffDescriptions = [
+  "East River Cliff: A stunning cliff overlooking the river with lush greenery.",
+  "North Mountain Cliff: Known for its rocky terrains and breathtaking mountain views.",
+  "South Canyon Cliff: Famous for its deep canyons and adventurous hiking trails.",
+  "West Sea Cliff: Offers beautiful sea views and popular sunset spots.",
+  "Forest Cliff: Surrounded by dense forest, perfect for wildlife watching."
+];
+
+// Select all images inside .cliff-images
+const cliffImages = document.querySelectorAll('.cliff-images img');
+
+cliffImages.forEach(img => {
+  img.addEventListener('click', function() {
+    const id = this.getAttribute('data-id');
+    const description = cliffDescriptions[id] || "No description available.";
+    prompt("Cliff Description:", description);
+  });
+});
+
     </script>
 </body>
 </html>
